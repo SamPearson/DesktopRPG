@@ -4,7 +4,7 @@ from sqlalchemy.orm import relationship
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from src.database.db import db
-from src.database.config_db import Config
+from src.api.config.config import Config
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
