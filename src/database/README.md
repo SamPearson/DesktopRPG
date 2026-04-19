@@ -20,9 +20,9 @@ The database layer follows a three-tier architecture separating concerns between
     ├── config_db.py             # Database configuration and initialization
     ├── db.py                    # SQLAlchemy instance
     ├── users/
-    │   ├── models.py            # User and authentication models
-    │   ├── repository.py
-    │   └── service.py
+    │   ├── user_models.py
+    │   ├── user_repository.py
+    │   └── user_service.py
     ├── species/
     │   ├── species_models.py
     │   ├── species_repository.py
@@ -283,8 +283,9 @@ See [ENTITIES.md](./ENTITIES.md) for detailed documentation of each entity in th
 
 Database settings are defined in `database/config_db.py`:
 - Database URI (defaults to SQLite in `instance/desktop_rpg.db`)
-- JWT configuration
-- Token expiration settings
+- SQLAlchemy configuration
+
+**Note**: API configuration (JWT, CORS) lives in `api/config/config.py`.
 
 ### Initialization Flow
 
