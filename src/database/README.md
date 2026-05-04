@@ -27,10 +27,10 @@ The database layer follows a three-tier architecture separating concerns between
     │   ├── species_models.py
     │   ├── species_repository.py
     │   └── species_service.py
-    └── playable_character/
-        ├── playable_character_models.py
-        ├── playable_character_repository.py
-        └── playable_character_service.py
+    └── kaijuchan/
+        ├── kaijuchan_models.py
+        ├── kaijuchan_repository.py
+        └── kaijuchan_service.py
 
 ## Core Concepts
 
@@ -66,8 +66,8 @@ Example:
 
     from src.database.base.base_models import UserOwnedModel
 
-    class PlayableCharacter(UserOwnedModel):
-        __tablename__ = "playable_character"
+    class Kaijuchan(UserOwnedModel):
+        __tablename__ = "kaijuchan"
         name = Column(String, nullable=True)
         # ... additional fields
 
@@ -79,12 +79,12 @@ Example:
 - Extended `as_dict()` including `user_id`
 
 **Bidirectional Access:**
-- From entity to user: `playable_character.user`
-- From user to entities: `user.playable_character_list`
+- From entity to user: `kaijuchan.user`
+- From user to entities: `user.kaijuchan_list`
 
 **Cascade Deletion:** When a user is deleted, all their owned entities are automatically deleted.
 
-**Use for**: PlayableCharacter, user inventory, user progress data
+**Use for**: Kaijuchan, user inventory, user progress data
 
 #### JSON Fields
 
@@ -126,9 +126,9 @@ Example:
 
     from src.database.base.repositories import UserOwnedRepository
 
-    class PlayableCharacterRepository(UserOwnedRepository[PlayableCharacter]):
+    class KaijuchanRepository(UserOwnedRepository[Kaijuchan]):
         def __init__(self, session):
-            super().__init__(session, PlayableCharacter)
+            super().__init__(session, Kaijuchan)
 
 **Provides:**
 - Everything from `BaseRepository`
@@ -275,7 +275,7 @@ See [ENTITIES.md](./ENTITIES.md) for detailed documentation of each entity in th
 **Current entities:**
 - **Users** - Authentication and user accounts
 - **Species** - Shared monster templates
-- **PlayableCharacter** - User-owned monster instances
+- **Kaijuchan** - User-owned monster instances
 
 ## Database Initialization
 

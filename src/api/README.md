@@ -23,9 +23,9 @@ The API layer provides RESTful HTTP endpoints for interacting with the game. It 
     │   ├── species/
     │   │   ├── __init__.py
     │   │   └── species_routes.py
-    │   └── playable_characters/
+    │   └── kaijuchan/
     │       ├── __init__.py
-    │       └── playable_character_routes.py
+    │       └── kaijuchan_routes.py
     ├── api.py                  # Application entry point
     └── app_factory.py          # Flask app configuration
 
@@ -197,7 +197,7 @@ Response:
 
 ### Using the Token
 
-    GET /api/playable_characters
+    GET /api/kaijuchan
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGc...
 
 ### Protected Routes
@@ -207,7 +207,7 @@ Use the `@jwt_required()` decorator:
     from flask_jwt_extended import jwt_required, get_jwt_identity
 
     @jwt_required()
-    def get_user_playable_characters():
+    def get_user_kaijuchan():
         current_user_id = int(get_jwt_identity())
         # ... handler logic
 
@@ -219,7 +219,7 @@ Tokens expire after 12 hours (configurable in `api/config/config.py`).
 
 ### User-Owned Resources
 
-Resources that belong to a specific user (e.g., PlayableCharacter).
+Resources that belong to a specific user (e.g., Kaijuchan).
 
 **Standard endpoints:**
 
@@ -233,10 +233,10 @@ Resources that belong to a specific user (e.g., PlayableCharacter).
 
 Example:
 
-    GET /api/playable_characters
+    GET /api/kaijuchan
     Authorization: Bearer <token>
 
-Returns only the authenticated user's characters.
+Returns only the authenticated user's kaijuchan.
 
 ### Shared Resources
 
@@ -282,7 +282,7 @@ For list endpoints, use query parameters:
 Use query parameters to filter results:
 
     GET /api/species?elemental_affinity=fire
-    GET /api/playable_characters?species_id=1&level_min=5
+    GET /api/kaijuchan?species_id=1&level_min=5
 
 **Multiple values for same parameter:**
 

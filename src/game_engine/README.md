@@ -28,7 +28,7 @@ The game engine handles **procedural generation** and **game mechanics**. It sit
     │   ├── personalities.py     # Personality types
     │   └── stats.py             # Stat attribute names
     └── spawn_services/
-        └── playable_character_spawner.py
+        └── kaijuchan_spawner.py
 
 ## Core Concepts
 
@@ -91,7 +91,7 @@ Game engine services implement procedural generation and game mechanics.
 
 **Current Services:**
 
-#### PlayableCharacterSpawner
+#### KaijuchanSpawner
 
 Handles wild encounter generation.
 
@@ -106,9 +106,9 @@ Handles wild encounter generation.
 
 **Example usage:**
 
-    from src.game_engine.spawn_services.playable_character_spawner import PlayableCharacterSpawner
+    from src.game_engine.spawn_services.kaijuchan_spawner import KaijuchanSpawner
 
-    spawner = PlayableCharacterSpawner(pc_service, species_repo)
+    spawner = KaijuchanSpawner(kaijuchan_service, species_repo)
     
     spawn_conditions = {
         'min_level': 5,
@@ -116,7 +116,7 @@ Handles wild encounter generation.
         'location': 'forest'
     }
     
-    character_data = spawner.generate_playable_character(spawn_conditions)
+    character_data = spawner.generate_kaijuchan(spawn_conditions)
 
 ## Responsibilities
 
@@ -303,7 +303,7 @@ The game engine may eventually include services for:
 Game engine services should be stateless - they don't maintain game state between calls:
 
     # Good - stateless
-    spawner.generate_playable_character(conditions)
+    spawner.generate_kaijuchan(conditions)
     
     # Avoid - stateful
     spawner.set_location('forest')
@@ -346,7 +346,7 @@ Game engine services should be tested for:
 The game engine is in early development. Current limitations:
 
 - Limited spawn conditions (location, level range)
-- Single spawner service (playable characters only)
+- Single spawner service (kaijuchan only)
 - No combat, progression, or loot systems
 - Minimal AI or behavior logic
 
