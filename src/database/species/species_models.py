@@ -5,7 +5,7 @@ from src.database.base.base_models import BaseModel
 
 class Species(BaseModel):
     """
-    Static definition of a playable character template.
+    Static definition of a kaijuchan character template.
     """
     __tablename__ = "species"
     __table_args__ = {'extend_existing': True}

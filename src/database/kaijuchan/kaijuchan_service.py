@@ -1,21 +1,21 @@
-from src.database.playable_character.playable_character_models import PlayableCharacter
-from src.database.playable_character.playable_character_repository import PlayableCharacterRepository
+from src.database.kaijuchan.kaijuchan_models import Kaijuchan
+from src.database.kaijuchan.kaijuchan_repository import KaijuchanRepository
 from src.database.species.species_repository import SpeciesRepository
 from src.game_engine.definitions.elements import ELEMENTAL_AFFINITIES
 from src.game_engine.definitions.personalities import PERSONALITY_KEYS
 
 
-class PlayableCharacterService:
+class KaijuchanService:
     def __init__(
         self,
-        pc_repo: PlayableCharacterRepository,
+        pc_repo: KaijuchanRepository,
         species_repo: SpeciesRepository
     ):
         self.pc_repo = pc_repo
         self.species_repo = species_repo
 
 
-    def generate_character(self, data: dict) -> dict:
+    def generate_kaijuchan(self, data: dict) -> dict:
         species = self._get_species(data.get("species_id"))
 
 
@@ -37,16 +37,16 @@ class PlayableCharacterService:
         return payload
 
 
-    def register_character(self, user_id: int, char_data: dict) -> PlayableCharacter:
+    def register_kaijuchan(self, user_id: int, char_data: dict) -> Kaijuchan:
 
         char_data['user_id'] = user_id
 
         return self.pc_repo.create(**char_data)
 
-    def create_character(self, user_id: int, data: dict) -> PlayableCharacter:
-        """Generate and persist a character in one step."""
-        char_data = self.generate_character(data)
-        return self.register_character(user_id, char_data)
+    def create_kaijuchan(self, user_id: int, data: dict) -> Kaijuchan:
+        """Generate and persist a kaijuchan in one step."""
+        char_data = self.generate_kaijuchan(data)
+        return self.register_kaijuchan(user_id, char_data)
 
 
     def _get_species(self, species_id: int):

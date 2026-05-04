@@ -3,12 +3,12 @@ from sqlalchemy import Column, Integer, String, ForeignKey, JSON
 from src.database.base.base_models import UserOwnedModel
 
 
-class PlayableCharacter(UserOwnedModel):
+class Kaijuchan(UserOwnedModel):
     """
     A user-owned instance of a species.
     Contains only inputs required for stat calculation and identity.
     """
-    __tablename__ = "playable_character"
+    __tablename__ = "kaijuchan"
 
     species_id = Column(Integer, ForeignKey("species.id"), nullable=False, index=True)
 

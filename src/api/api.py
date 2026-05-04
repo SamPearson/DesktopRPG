@@ -12,14 +12,14 @@ from src.api.app_factory import create_app
 
 from src.api.routes.users import users_bp
 from src.api.routes.species import species_bp
-from src.api.routes.playable_characters import playable_character_bp
+from src.api.routes.kaijuchan import kaijuchan_bp
 
 app = create_app()
 
 # Register all blueprints
 app.register_blueprint(users_bp)
 app.register_blueprint(species_bp)
-app.register_blueprint(playable_character_bp)
+app.register_blueprint(kaijuchan_bp)
 
 
 @app.route('/api/health', methods=['GET'])

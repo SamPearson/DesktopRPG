@@ -1,4 +1,4 @@
-from src.database.playable_character.playable_character_service import PlayableCharacterService
+from src.database.kaijuchan.kaijuchan_service import KaijuchanService
 from src.database.species.species_repository import SpeciesRepository
 import random
 import logging
@@ -6,16 +6,16 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-class PlayableCharacterSpawner:
+class KaijuchanSpawner:
     def __init__(
         self, 
-        playable_character_service: PlayableCharacterService,
+        kaijuchan_service: KaijuchanService,
         species_repo: SpeciesRepository
     ):
-        self.pc_service = playable_character_service
+        self.pc_service = kaijuchan_service
         self.species_repo = species_repo
 
-    def generate_playable_character(self, spawn_conditions: dict) -> dict | None:
+    def generate_kaijuchan(self, spawn_conditions: dict) -> dict | None:
         """
         Generate a wild encounter based on spawn conditions.
         Returns character data dict or None if spawn failed.
@@ -42,7 +42,7 @@ class PlayableCharacterSpawner:
 
         # Validate through the service
         try:
-            return self.pc_service.generate_character(char_data)
+            return self.pc_service.generate_kaijuchan(char_data)
         except ValueError as e:
             logger.error(f"Failed to generate valid character: {e}")
             return None
